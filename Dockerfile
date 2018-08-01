@@ -9,4 +9,6 @@ WORKDIR /tmp
 COPY SafenetAuthenticationClient-core-10.0.60-1_amd64.deb /tmp
 RUN dpkg -i SafenetAuthenticationClient-core-10.0.60-1_amd64.deb
 
-RUN bash
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+CMD pkcs11-tool --module /usr/lib/libeToken.so -I

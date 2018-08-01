@@ -10,7 +10,7 @@ before_install:
 
 script:
   - docker images
-  - docker run --rm --privileged -v /dev/bus/usb:/dev/bus/usb yryz/safenet-etoken lsusb
+  - docker run --rm yryz/safenet-etoken
 
 deploy:
   provider: script
