@@ -10,7 +10,7 @@ before_install:
 
 script:
   - docker images
-  - docker run --rm yryz/safenet-etoken pkcs11-tool --module /usr/lib/libeToken.so -I | grep SafeNet
+  - docker run --rm --privileged -v /dev/bus/usb:/dev/bus/usb yryz/safenet-etoken lsusb
 
 deploy:
   provider: script
