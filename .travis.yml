@@ -1,0 +1,19 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t yryz/safenet-etoken .
+
+script:
+  - docker images
+  - docker run --rm yryz/safenet-etoken pkcs11-tool --module /usr/lib/libeToken.so -I | grep SafeNet
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
