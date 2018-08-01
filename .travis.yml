@@ -10,7 +10,7 @@ before_install:
 
 script:
   - docker images
-  - docker run --rm yryz/safenet-etoken
+  - docker run --rm yryz/safenet-etoken | grep SafeNet
 
 deploy:
   provider: script
